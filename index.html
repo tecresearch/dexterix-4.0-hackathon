@@ -1,1 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plant Disease Detection</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+  }
+
+  h1 {
+    text-align: center;
+  }
+
+  #resultTable {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  #resultTable th, #resultTable td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+
+  #resultTable th {
+    background-color: #f2f2f2;
+  }
+</style>
+</head>
+<body>
+<h1>Plant Disease Detection</h1>
+<input type="file" id="imageInput">
+<button onclick="detectDisease()">Check Disease</button>
+<table id="resultTable">
+  <tr>
+    <th>Image</th>
+    <th>Plant</th>
+    <th>Disease</th>
+    <th>Info</th>
+  </tr>
+</table>
+<script>
+  function detectDisease() {
+    var input = document.getElementById('imageInput');
+    var file = input.files[0];
+    if (file) {
+      var reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = function() {
+        var imgData = reader.result;
+        // Call your detection function passing the imgData
+        // For demonstration, let's assume we have detected the plant and disease
+        var plant = "Tomato";
+        var disease = "Early Blight";
+        var info = "Early blight, also known as Alternaria leaf spot, is a common fungal disease that affects tomato plants.";
+        displayResult(imgData, plant, disease, info);
+      };
+    }
+  }
+
+  function displayResult(imgData, plant, disease, info) {
+    var table = document.getElementById('resultTable');
+    var newRow = table.insertRow(-1);
+    var imgCell = newRow.insertCell(0);
+    var plantCell = newRow.insertCell(1);
+    var diseaseCell = newRow.insertCell(2);
+    var infoCell = newRow.insertCell(3);
+    imgCell.innerHTML = '<img src="' + imgData + '" alt="Uploaded Image" style="max-width:100px;">';
+    plantCell.textContent = plant;
+    diseaseCell.textContent = disease;
+    infoCell.textContent = info;
+  }
+</script>
+</body>
+</html>
 
