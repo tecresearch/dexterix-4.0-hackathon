@@ -136,6 +136,8 @@
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+   position: relative;
+    color: red;
 }
 
 .close-btn {
@@ -245,6 +247,7 @@
 <!-- Pop-up content -->
 <div class="overlay" id="popup">
     <div class="popup">
+        <div class="close"></div>
         <span class="close-btn" onclick="closePopup()">&times;</span>
         <h2>🎉 Exciting News!<button onclick="openModal()">View App Model</button> 🎉</h2>
         <p>Our team from TecResearch is thrilled to announce that we've been selected for the Galgotias University Dexterix 4.0 Hackathon! 🚀</p>
