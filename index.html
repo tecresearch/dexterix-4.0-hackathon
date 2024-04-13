@@ -83,6 +83,43 @@
   #resultTable td:first-child {
     width: 150px;
   }
+
+  /* Modal styles */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 800px;
+  }
+
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
 </style>
 </head>
 <body>
@@ -97,6 +134,15 @@
     <th>Info</th>
   </tr>
 </table>
+
+<!-- Modal popup window -->
+<div id="myModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <iframe id="prototypeFrame" style="border: 1px solid rgba(0, 0, 0, 0.1);" width="100%" height="450" src="" allowfullscreen></iframe>
+  </div>
+</div>
+
 <script>
   function detectDisease() {
     var input = document.getElementById('imageInput');
@@ -128,7 +174,33 @@
     diseaseCell.textContent = disease;
     infoCell.textContent = info;
   }
+
+  // Modal functions
+  function openModal() {
+    var modal = document.getElementById("myModal");
+    modal.style.display = "block";
+    var iframeSrc = "https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FfZhcyDMXQmAyamKQWczR8w%2FUntitled%3Ftype%3Ddesign%26node-id%3D3-5%26t%3DijHMks6tZ1V5rDvC-1%26scaling%3Dscale-down%26page-id%3D0%253A1%26starting-point-node-id%3D3%253A5%26mode%3Ddesign";
+    var iframe = document.getElementById("prototypeFrame");
+    iframe.src = iframeSrc;
+  }
+
+  function closeModal() {
+    var modal = document.getElementById("myModal");
+    modal.style.display = "none";
+    var iframe = document.getElementById("prototypeFrame");
+    iframe.src = ""; // Clear iframe src to stop any ongoing loading
+  }
+
+  // Close the modal when clicking outside of it
+  window.onclick = function(event) {
+    var modal = document.getElementById("myModal");
+    if (event.target == modal) {
+      modal.style.display = "none";
+      var iframe = document.getElementById("prototypeFrame");
+      iframe.src = ""; // Clear iframe src to stop any ongoing loading
+    }
+  }
 </script>
- <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FfZhcyDMXQmAyamKQWczR8w%2FUntitled%3Ftype%3Ddesign%26node-id%3D3-5%26t%3DijHMks6tZ1V5rDvC-1%26scaling%3Dscale-down%26page-id%3D0%253A1%26starting-point-node-id%3D3%253A5%26mode%3Ddesign" allowfullscreen></iframe>
+
 </body>
 </html>
