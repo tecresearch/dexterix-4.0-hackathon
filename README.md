@@ -18,3 +18,4 @@ project
 14-04-2024  07:57    <DIR>          valid
                7 File(s)    139,075,395 bytes
                5 Dir(s)  95,775,334,400 bytes free
+https://www.mediafire.com/file/ig4am4208ckbrk1/trained_plant_disease_model.keras/file 
